@@ -1,0 +1,23 @@
+﻿<Window x:Class="EbaniyMagaz.Store"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EbaniyMagaz"
+        mc:Ignorable="d"
+        Title="Store" Height="720" Width="1280" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Frame x:Name="frame"  Content="frame" HorizontalAlignment="Left" Height="689" VerticalAlignment="Top" Width="1018" NavigationUIVisibility="Hidden" Margin="254,0,0,0" Loaded="frame_Loaded" />
+        <Grid HorizontalAlignment="Left" Height="689" VerticalAlignment="Top" Width="254" Background="#FF494848">
+            <ListBox HorizontalAlignment="Left" Height="632" VerticalAlignment="Top" Width="254">
+                <ListBoxItem Content="Главная" Height="25" Width="251" Selected="ListBoxItem_Selected"/>
+                <ListBoxItem Content="Процессоры" Width="250" Height="25" Selected="ListBoxItem_Selected_1"/>
+                <ListBoxItem Content="Видеокарты" Height="25"/>
+                <ListBoxItem Content="Материнские платы"/>
+                <ListBoxItem Content="Оперативная память"/>
+                <ListBoxItem Content="Внутренняя память"/>
+            </ListBox>
+            <Button Content="Корзина" HorizontalAlignment="Left" Margin="50,648,0,0" VerticalAlignment="Top" Width="155" Height="31" Click="Button_Click"/>
+        </Grid>
+    </Grid>
+</Window>
