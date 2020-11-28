@@ -4,19 +4,47 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Store" Height="720" Width="1280" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Store" Height="720" 
+        Width="1280" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
-        <Frame x:Name="frame"  Content="frame" HorizontalAlignment="Left" Height="689" VerticalAlignment="Top" Width="1018" NavigationUIVisibility="Hidden" Margin="254,0,0,0" Loaded="frame_Loaded" />
-        <Grid HorizontalAlignment="Left" Height="689" VerticalAlignment="Top" Width="254" Background="#FF494848">
-            <ListBox HorizontalAlignment="Left" Height="632" VerticalAlignment="Top" Width="254">
-                <ListBoxItem Content="Главная" Height="25" Width="251" Selected="ListBoxItem_Selected"/>
-                <ListBoxItem Content="Процессоры" Width="250" Height="25" Selected="ListBoxItem_Selected_1"/>
-                <ListBoxItem Content="Видеокарты" Height="25"/>
-                <ListBoxItem Content="Материнские платы"/>
-                <ListBoxItem Content="Оперативная память"/>
-                <ListBoxItem Content="Внутренняя память"/>
-            </ListBox>
-            <Button Content="Корзина" HorizontalAlignment="Left" Margin="50,648,0,0" VerticalAlignment="Top" Width="155" Height="31" Click="Button_Click"/>
+       <!--Menu-->
+
+        <Grid Background="Red" Width="220"
+            HorizontalAlignment="Left">
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="3"/>
+            </Grid.Effect>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <ListView x:Name="NavMenu"
+                      SelectionChanged="NavMenu_SelectionChanged">
+                <ListViewItem>
+                    <TextBlock Text="Главная"/>
+                </ListViewItem>
+                <ListViewItem>
+                    <TextBlock Text="Процессоры"/>
+                </ListViewItem>
+                <ListViewItem>
+                    <TextBlock Text="Видеокарта"/>
+                </ListViewItem>
+            </ListView>
+            <Grid Grid.Row="1" Background="White">
+                <Button Content="Корзина" FontSize="20"
+                        x:Name="CartButton"
+                        Click="CartButton_Click"/>
+            </Grid>
+            
         </Grid>
+        
+        <Frame x:Name="MainFrame" Margin="220,0,0,0"/>
     </Grid>
 </Window>

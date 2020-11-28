@@ -15,34 +15,36 @@ using System.Windows.Shapes;
 
 namespace EbaniyMagaz.Views.Windows
 {
-    /// <summary>
-    /// Логика взаимодействия для Store.xaml
-    /// </summary>
     public partial class Store : Window
     {
+        private LocalData _localData;
         public Store()
         {
             InitializeComponent();
+            LocalData localData = new LocalData();
+            _localData = localData;
         }
 
-        private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
+        private void NavMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            frame.Navigate(new HomePageStore(new LocalData() { MainFrame = frame}));
+            _localData.MainFrame = MainFrame;
+            switch (NavMenu.SelectedIndex)
+            {
+                case 0:
+                    HomePageStore homePage = new HomePageStore(_localData);
+                    MainFrame.NavigationService.Navigate(homePage);
+                    break;
+                case 1:
+                    ProcessorsPage processorsPage = new ProcessorsPage(_localData);
+                    MainFrame.NavigationService.Navigate(processorsPage);
+                    break;
+            }
         }
 
-        private void ListBoxItem_Selected_1(object sender, RoutedEventArgs e)
+        private void CartButton_Click(object sender, RoutedEventArgs e)
         {
-            frame.Navigate(new Processors(new LocalData() { MainFrame = frame }));
-        }
-
-        private void frame_Loaded(object sender, RoutedEventArgs e)
-        {
-            frame.Navigate(new HomePageStore(new LocalData() { MainFrame = frame }));
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //frame.Navigate(new Pages.CartPage());
+            CartPage cartPage = new CartPage(_localData);
+            MainFrame.NavigationService.Navigate(cartPage);
         }
     }
 }

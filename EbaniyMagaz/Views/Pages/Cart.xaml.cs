@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,12 +20,15 @@ namespace EbaniyMagaz.Views.Pages
     /// </summary>
     public partial class CartPage : Page
     {
-        public List<Component> Cartlist;
+        private LocalData localData;
+        private List<Component> cartlist;
 
-        public CartPage(List<Component> cartlist)
+        public CartPage(LocalData localData)
         {
             InitializeComponent();
-            this.Cartlist = cartlist;
+
+            this.localData = localData;
+            this.cartlist = localData.CartList;
         }
 
         //private List<Component> Upload(string cmd)
@@ -65,48 +67,6 @@ namespace EbaniyMagaz.Views.Pages
         {
 
         }
-
-        //public class CartLogic
-        //{
-        //    List<CartLine> lineCollection = new List<CartLine>();
-
-        //    public void AddItem(Component component, int quantity)
-        //    {
-        //        CartLine line = lineCollection
-        //            .Where(p => p.Component.Id == component.Id)
-        //            .FirstOrDefault();
-
-        //        if (line == null)
-        //        {
-        //            lineCollection.Add(new CartLine
-        //            {
-        //                Component = component,
-        //                Quantity = quantity
-        //            });
-        //        }
-        //        else
-        //        {
-        //            line.Quantity += quantity;
-        //        }
-        //    }
-
-        //    public void RemoveLine(Component component)
-        //    {
-        //        lineCollection.RemoveAll(l => l.Component.Id == component.Id);
-        //    }
-
-        //    public decimal ComputeTotalValue()
-        //    {
-        //        return lineCollection.Sum(e => Convert.ToInt32(e.Component.Price) * e.Quantity);
-
-        //    }
-        //    public void Clear()
-        //    {
-        //        lineCollection.Clear();
-        //    }
-
-        //    public IEnumerable<CartLine> Lines => lineCollection;
-        //}
     }
 }
 

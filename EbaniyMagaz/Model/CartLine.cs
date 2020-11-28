@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 
-namespace EbaniyMagaz
+namespace EbaniyMagaz.Model
 {
-    public class LocalData
+    public class CartLine
     {
-        public Frame MainFrame { get; set; }
-
         public Component Component { get; set; }
-
-        public List<Component> CartList { get; set; }
+        public int Quantity { get; set; }
     }
 }

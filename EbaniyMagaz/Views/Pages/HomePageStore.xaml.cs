@@ -65,8 +65,6 @@ namespace EbaniyMagaz.Views.Pages
         {
             StoreProccesors.ItemsSource = Upload("SELECT * FROM  components");
 
-            CartPage cartPage = new CartPage(new List<Component>());
-            localdata.CartPage = cartPage;
         }
 
         private void asd(object sender, SelectionChangedEventArgs e)
