@@ -13,9 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static EbaniyMagaz.CartLogic;
 
-namespace EbaniyMagaz.Pages
+namespace EbaniyMagaz.Views.Pages
 {
     /// <summary>
     /// Логика взаимодействия для Cart.xaml

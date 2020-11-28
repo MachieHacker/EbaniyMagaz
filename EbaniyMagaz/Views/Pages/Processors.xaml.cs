@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EbaniyMagaz.Pages
+namespace EbaniyMagaz.Views.Pages
 {
     /// <summary>
     /// Логика взаимодействия для Processors.xaml
@@ -87,7 +87,7 @@ namespace EbaniyMagaz.Pages
                 var list = new List<Component>();
                 list.Add(element);
 
-                localdata.CartPage
+                //localdata.CartPage
 
                 
             }

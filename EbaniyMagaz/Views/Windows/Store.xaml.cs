@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EbaniyMagaz.Views.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace EbaniyMagaz
+namespace EbaniyMagaz.Views.Windows
 {
     /// <summary>
     /// Логика взаимодействия для Store.xaml
@@ -31,7 +32,7 @@ namespace EbaniyMagaz
 
         private void ListBoxItem_Selected_1(object sender, RoutedEventArgs e)
         {
-            frame.Navigate(new Pages.Processors(new LocalData() { MainFrame = frame }));
+            frame.Navigate(new Processors(new LocalData() { MainFrame = frame }));
         }
 
         private void frame_Loaded(object sender, RoutedEventArgs e)
@@ -41,7 +42,7 @@ namespace EbaniyMagaz
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            frame.Navigate(new Pages.CartPage());
+            //frame.Navigate(new Pages.CartPage());
         }
     }
 }
