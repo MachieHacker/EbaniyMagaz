@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EbaniyMagaz.Views.Pages
+namespace EbaniyMagaz.Pages
 {
     /// <summary>
     /// Логика взаимодействия для Opened.xaml

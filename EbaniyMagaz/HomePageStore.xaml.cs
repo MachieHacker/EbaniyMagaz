@@ -14,8 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static EbaniyMagaz.CartLogic;
 
-namespace EbaniyMagaz.Views.Pages
+namespace EbaniyMagaz
 {
     /// <summary>
     /// Логика взаимодействия для HomePageStore.xaml
@@ -65,7 +66,7 @@ namespace EbaniyMagaz.Views.Pages
         {
             StoreProccesors.ItemsSource = Upload("SELECT * FROM  components");
 
-            CartPage cartPage = new CartPage(new List<Component>());
+            Pages.CartPage cartPage = new Pages.CartPage(new List<Component>());
             localdata.CartPage = cartPage;
         }
 
