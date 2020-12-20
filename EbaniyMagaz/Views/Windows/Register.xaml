@@ -6,25 +6,61 @@
         xmlns:local="clr-namespace:EbaniyMagaz"
         mc:Ignorable="d"
         Title="Register" Height="450" Width="800">
-    <Grid Background="#FFEFFB7A">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Padding" Value="10,5" />
+            <!--<Setter Property="FontFamily" Value="{StaticResource LatoThin}"/>
+            <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}"/>-->
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontSize" Value="14"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Border" CornerRadius="8" BorderBrush="AliceBlue" BorderThickness="1.5" Background="{TemplateBinding Background}">
+                            <Grid Background="Transparent" Margin="11,5">
+                                <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#FFAAF0F0" />
+                                <Setter Property="BorderBrush" TargetName="Border" Value="#FFAAF0F0"/>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Foreground" Value="Orange" />
+                                <Setter Property="BorderBrush" TargetName="Border" Value="Orange"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="White">
         <TextBox x:Name="textbox_register_login" HorizontalAlignment="Left" Height="23" Margin="137,59,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="205"/>
-        <TextBox x:Name="textbox_register_secondname" HorizontalAlignment="Left" Height="23" Margin="496,109,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="205"/>
-        <TextBox x:Name="textbox_register_firstname" HorizontalAlignment="Left" Height="23" Margin="496,59,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="205"/>
+        <TextBox x:Name="textbox_register_secondname" HorizontalAlignment="Left" Height="23" Margin="513,109,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="205"/>
+        <TextBox x:Name="textbox_register_firstname" HorizontalAlignment="Left" Height="23" Margin="513,59,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="205"/>
         <TextBox x:Name="textbox_register_phone" HorizontalAlignment="Left" Height="23" Margin="137,227,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="205"/>
         <TextBox x:Name="textbox_register_email" HorizontalAlignment="Left" Height="23" Margin="137,109,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="205"/>
-        <Label Content="Login" HorizontalAlignment="Left" Margin="55,55,0,0" VerticalAlignment="Top"/>
-        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="432,105,0,0" VerticalAlignment="Top"/>
-        <Label Content="Имя" HorizontalAlignment="Left" Margin="432,55,0,0" VerticalAlignment="Top"/>
-        <Label Content="Тел." HorizontalAlignment="Left" Margin="55,223,0,0" VerticalAlignment="Top"/>
-        <Label Content="Password" HorizontalAlignment="Left" Margin="55,163,0,0" VerticalAlignment="Top"/>
-        <Label Content="Email" HorizontalAlignment="Left" Margin="55,105,0,0" VerticalAlignment="Top"/>
-        <Button Content="Register" HorizontalAlignment="Left" Margin="341,327,0,0" VerticalAlignment="Top" Width="100" Height="35" FontSize="16" Background="#FFF3EA2A" Click="Button_Click"/>
+        <Label Content="Login" HorizontalAlignment="Left" Margin="55,55,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="432,105,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="432,55,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <Label Content="Тел." HorizontalAlignment="Left" Margin="55,223,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="55,163,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="55,105,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <Button Content="Register" HorizontalAlignment="Left" Margin="335,327,0,0" VerticalAlignment="Top" Width="120" Height="45" FontSize="16" Background="DarkOrange" Click="Button_Click" BorderBrush="White" Foreground="White"/>
         <Label x:Name="label_register_warning4" Content="Этот логин уже существует" HorizontalAlignment="Left" Margin="137,82,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="Red" Opacity="0"/>
         <Label x:Name="label_register_warning" Content="Введите 11-ти значных номер" HorizontalAlignment="Left" Margin="137,255,0,0" VerticalAlignment="Top" Foreground="Red" Opacity="0"/>
         <Label x:Name="label_register_warning2" Content="Необходимо ввести более 8 знаков" HorizontalAlignment="Left" Margin="137,195,0,0" VerticalAlignment="Top" Foreground="Red" Opacity="0"/>
         <Label x:Name="label_register_warning3" Content="Введите коректный Email" HorizontalAlignment="Left" Margin="137,136,0,0" VerticalAlignment="Top" Foreground="Red" Opacity="0"/>
         <PasswordBox x:Name="passbox_register_pass" HorizontalAlignment="Left" Margin="137,162,0,0" VerticalAlignment="Top" Width="203" Height="27"/>
-        <Button Content="&#8658;" HorizontalAlignment="Left" Margin="723,10,0,0" VerticalAlignment="Top" Width="59" Height="39" Background="{x:Null}" BorderBrush="{x:Null}" FontWeight="Bold" FontSize="24" Click="Button_Click_1"/>
+        <Button Content="&#8658;" HorizontalAlignment="Left" Margin="723,10,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="50" Height="50" Background="DarkOrange" BorderBrush="{x:Null}" FontWeight="Bold" FontSize="24" Click="Button_Click_1" Foreground="White"/>
 
     </Grid>
 </Window>

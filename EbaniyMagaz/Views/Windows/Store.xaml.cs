@@ -1,4 +1,5 @@
-﻿using EbaniyMagaz.Views.Pages;
+﻿using EbaniyMagaz.Model;
+using EbaniyMagaz.Views.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace EbaniyMagaz.Views.Windows
             InitializeComponent();
             LocalData localData = new LocalData();
             _localData = localData;
+            _localData.CartObject = new Cart(new List<CartLine>());
         }
 
         private void NavMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -30,13 +32,45 @@ namespace EbaniyMagaz.Views.Windows
             _localData.MainFrame = MainFrame;
             switch (NavMenu.SelectedIndex)
             {
-                case 0:
-                    HomePageStore homePage = new HomePageStore(_localData);
-                    MainFrame.NavigationService.Navigate(homePage);
-                    break;
                 case 1:
-                    ProcessorsPage processorsPage = new ProcessorsPage(_localData);
+                    _localData.ProductType = ProductType.processors;
+                    TemplatePage processorsPage = new TemplatePage(_localData);
                     MainFrame.NavigationService.Navigate(processorsPage);
+                    break;
+                case 2:
+                    _localData.ProductType = Model.ProductType.videocards;
+                    TemplatePage videoPage = new TemplatePage(_localData);
+                    MainFrame.NavigationService.Navigate(videoPage);
+                    break;
+                case 3:
+                    _localData.ProductType = Model.ProductType.motherboard;
+                    TemplatePage mboards = new TemplatePage(_localData);
+                    MainFrame.NavigationService.Navigate(mboards);
+                    break;
+                case 4:
+                    _localData.ProductType = Model.ProductType.ram;
+                    TemplatePage rams = new TemplatePage(_localData);
+                    MainFrame.NavigationService.Navigate(rams);
+                    break;
+                case 5:
+                    _localData.ProductType = Model.ProductType.harddrives;
+                    TemplatePage hdd = new TemplatePage(_localData);
+                    MainFrame.NavigationService.Navigate(hdd);
+                    break;
+                case 6:
+                    _localData.ProductType = Model.ProductType.powersuplies;
+                    TemplatePage pwr = new TemplatePage(_localData);
+                    MainFrame.NavigationService.Navigate(pwr);
+                    break;
+                case 7:
+                    _localData.ProductType = Model.ProductType.cooling;
+                    TemplatePage cooling = new TemplatePage(_localData);
+                    MainFrame.NavigationService.Navigate(cooling);
+                    break;
+                case 8:
+                    _localData.ProductType = Model.ProductType.cases;
+                    TemplatePage cases = new TemplatePage(_localData);
+                    MainFrame.NavigationService.Navigate(cases);
                     break;
             }
         }

@@ -5,20 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EbaniyMagaz"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="350" Background="#FFEFFB7A" ResizeMode="NoResize">
-    <Grid>
+        Title="MainWindow" Height="450" Width="350" Background="White" ResizeMode="NoResize">
+    <Grid Background="White">
         <Grid.BindingGroup>
             <BindingGroup/>
         </Grid.BindingGroup>
-        <Button x:Name="button_login" Content="Log In" HorizontalAlignment="Left" Margin="210,345,0,0" VerticalAlignment="Top" Width="75" Click="button_login_Click"/>
-        <Button x:Name="button_register" Content="Register" HorizontalAlignment="Left" Margin="70,345,0,0" VerticalAlignment="Top" Width="75" Click="button_register_Click"/>
-        <Label Content="Authtorization" HorizontalAlignment="Center" Margin="108,10,92,0" VerticalAlignment="Top" Width="142" Height="37" FontFamily="Times New Roman" FontSize="22"  />
-        <TextBox x:Name="textbox_login" HorizontalAlignment="Left" Height="23" Margin="75,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="222"/>
-        <Label Content="Login" HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top" Height="27"/>
-        <Label Content="Password" HorizontalAlignment="Left" Margin="10,199,0,0" VerticalAlignment="Top" Height="23"/>
-        <PasswordBox x:Name="textbox_pass" HorizontalAlignment="Left" Margin="75,199,0,0" VerticalAlignment="Top" Width="222" Height="23"/>
+        <Button x:Name="button_login" Content="Log In" Margin="215,345,48,0" Click="button_login_Click" Background="DarkOrange" Foreground="White"/>
+        <Button x:Name="button_register" Content="Register" Margin="58,345,198,0" Click="button_register_Click" Background="DarkOrange" Foreground="White"/>
+        <Label Content="DPS" FontFamily="Courier New" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="32" Margin="0,0,0,351" FontWeight="Bold" Foreground="White" Background="DarkOrange"  />
+        <TextBox x:Name="textbox_login" HorizontalAlignment="Left" Height="23" Margin="91,148,0,0" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Width="222"/>
+        <Label Content="Login" HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top" FontFamily="Franklin Gothic Medium" FontSize="16" Height="30"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="10,195,0,0" VerticalAlignment="Top" FontFamily="Franklin Gothic Medium" FontSize="16" Height="27"/>
+        <PasswordBox x:Name="textbox_pass" HorizontalAlignment="Left" Margin="91,199,0,0" VerticalAlignment="Top" Width="222" Height="23"/>
 
 
     </Grid>
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Padding" Value="10,5" />
+            <!--<Setter Property="FontFamily" Value="{StaticResource LatoThin}"/>
+            <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}"/>-->
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontSize" Value="14"/>
 
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Border" CornerRadius="8" BorderBrush="AliceBlue" BorderThickness="1.5" Background="{TemplateBinding Background}">
+                            <Grid Background="Transparent" Margin="11,5">
+                                <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#FFAAF0F0" />
+                                <Setter Property="BorderBrush" TargetName="Border" Value="#FFAAF0F0"/>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Foreground" Value="Orange" />
+                                <Setter Property="BorderBrush" TargetName="Border" Value="Orange"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 </Window>

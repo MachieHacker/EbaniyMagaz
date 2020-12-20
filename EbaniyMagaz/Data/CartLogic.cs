@@ -12,6 +12,11 @@ namespace EbaniyMagaz
     {
         private List<CartLine> lineCollection = new List<CartLine>();
 
+        public Cart(List<CartLine> lineCollection)
+        {
+            this.lineCollection = lineCollection;
+        }
+
         public void AddItem(Component component, int quantity)
         {
             CartLine line = lineCollection
@@ -37,7 +42,7 @@ namespace EbaniyMagaz
             lineCollection.RemoveAll(l => l.Component.Id == component.Id);
         }
 
-        public decimal ComputeTotalValue()
+        public float ComputeTotalValue()
         {
             return lineCollection.Sum(e => Convert.ToInt32(e.Component.Price) * e.Quantity);
 
@@ -47,7 +52,7 @@ namespace EbaniyMagaz
             lineCollection.Clear();
         }
 
-        public IEnumerable<CartLine> Lines
+        public List<CartLine> Lines
         {
             get { return lineCollection; }
         }

@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using EbaniyMagaz.Data;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -29,60 +30,24 @@ namespace EbaniyMagaz.Views.Pages
             InitializeComponent();
             this.localdata = localdata;
         }
-        private List<Component> Upload(string cmd)
-        {
-            using (MySqlConnection connection = new MySqlConnection(DataBase.connection))
-            {
-                List<Component> components = new List<Component>();
-                connection.Open();
 
-                using (MySqlCommand command = new MySqlCommand(cmd, connection))
-                {
-                    using (MySqlDataReader reader = command.ExecuteReader())
-                    {                   
-
-                        while (reader.Read())
-                        {
-                            components.Add(new Component()
-                            {
-                                Id = Convert.ToInt32(reader["ProductId"]),
-                                Manufacturer = reader["Manufacturer"].ToString(),
-                                Model = reader["Model"].ToString(),
-                                Specification = reader["Specifications"].ToString(),
-                                Price = reader["Price"].ToString()
-
-                            });
-                        }
-                    }
-                    command.ExecuteNonQuery();
-                }
-                return components;
-
-            }
-        }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            StoreProccesors.ItemsSource = Upload("SELECT * FROM  components");
+            StoreProccesors.ItemsSource = DatabaseManager.Upload("SELECT * FROM  components");   
 
         }
 
         private void asd(object sender, SelectionChangedEventArgs e)
         {
-            if (StoreProccesors.SelectedItem != null)
+            if (StoreProccesors.ItemsSource != null)
             {
                 localdata.Component = StoreProccesors.SelectedItem as Component;
-
                 localdata.MainFrame.NavigationService.Navigate(new Pages.Opened(localdata));
             }
 
             
             
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         

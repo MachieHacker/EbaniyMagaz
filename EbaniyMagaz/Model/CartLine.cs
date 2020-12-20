@@ -10,5 +10,6 @@ namespace EbaniyMagaz.Model
     {
         public Component Component { get; set; }
         public int Quantity { get; set; }
+        public float TotalPrice { get; set; }
     }
 }

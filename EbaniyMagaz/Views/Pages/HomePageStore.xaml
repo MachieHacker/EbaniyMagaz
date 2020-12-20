@@ -28,12 +28,11 @@
                                             HorizontalAlignment="Left"
                                             Margin="5"
                                             FontSize="18"/>
-                            <TextBlock Text="{Binding Price}"
+                            <TextBlock Text="{Binding Price, StringFormat=C, ConverterCulture=ru-RU}"
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Left"
                                             Margin="5"
                                             FontSize="18"/>
-                            <Button Content="В Корзину" Click="Button_Click"/>
                         </StackPanel>
 
                     </Grid>

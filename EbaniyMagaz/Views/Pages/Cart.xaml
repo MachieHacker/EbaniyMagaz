@@ -7,17 +7,102 @@
       d:DesignHeight="689" d:DesignWidth="1018"
       Title="Cart">
 
-    <Grid Background="#FFCDC4C4">
-        <ListView x:Name="mmm" HorizontalAlignment="Left" Height="575" Margin="53,44,0,0" VerticalAlignment="Top" Width="906">
+    <StackPanel>
+        <Button x:Name="DeletePos" Content="Удалить" Click="Delete_Position" Background="DarkOrange" Foreground="White"/>
+        <ListView x:Name="mmm" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="654" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Margin" Value="0,5,0,0"/>
+                    <!--<Setter Property="BorderBrush" Value="{StaticResource ForegroundLightBrush}"/>
+                    <Setter Property="Background" Value="{StaticResource LauncherBodyBackgroundBrush}"/>-->
+                    <Setter Property="FontSize" Value="15"/>
+                    <!--<Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}"/>-->
+                    <Setter Property="Padding" Value="20"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="LightGray"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="DarkOrange"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <!--<Setter Property="FontWeight" Value="Bold"/>-->
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="150"></GridViewColumn>
-                    <GridViewColumn Width="400"></GridViewColumn>
-                    <GridViewColumn Width="100"></GridViewColumn>
-                    <GridViewColumn Width="400"></GridViewColumn>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                            <Setter Property="Background" Value="DarkOrange"/>
+                            <Setter Property="FontSize" Value="15"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Padding" Value="5"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                                        <Border x:Name="Border" CornerRadius="8" BorderBrush="AliceBlue" BorderThickness="1.5" Background="{TemplateBinding Background}">
+                                            <Grid Background="Transparent" Margin="11,5">
+                                                <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <!--<Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}"/>-->
+
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn Header="Кол-во" DisplayMemberBinding="{Binding Quantity}"/>
+                    <GridViewColumn Header="Модель" DisplayMemberBinding="{Binding Component.Model}"/>
+                    <GridViewColumn Header="Производитель" DisplayMemberBinding="{Binding Component.Manufacturer}"/>
+                    <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Component.Price, ConverterCulture=ru-RU, StringFormat=C}"/>
+                    <GridViewColumn Header="Общая стоимость" DisplayMemberBinding="{Binding TotalPrice, ConverterCulture=ru-RU, StringFormat=C}"/>
                 </GridView>
             </ListView.View>
-            <ListViewItem Content="ListViewItem" Margin="10"/>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
-    </Grid>
+    </StackPanel>
+    <Page.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Padding" Value="10,5" />
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <!--<Setter Property="FontFamily" Value="{StaticResource LatoThin}"/>
+            <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}"/>-->
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontSize" Value="14"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Border" CornerRadius="8" BorderBrush="AliceBlue" BorderThickness="1.5" Background="{TemplateBinding Background}">
+                            <Grid Background="Transparent" Margin="11,5">
+                                <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#FFAAF0F0" />
+                                <Setter Property="BorderBrush" TargetName="Border" Value="#FFAAF0F0"/>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Foreground" Value="Orange" />
+                                <Setter Property="BorderBrush" TargetName="Border" Value="Orange"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
 </Page>

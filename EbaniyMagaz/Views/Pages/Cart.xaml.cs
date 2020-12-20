@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EbaniyMagaz.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,52 +22,39 @@ namespace EbaniyMagaz.Views.Pages
     public partial class CartPage : Page
     {
         private LocalData localData;
-        private List<Component> cartlist;
+        private Cart cartObj;
 
         public CartPage(LocalData localData)
         {
             InitializeComponent();
 
             this.localData = localData;
-            this.cartlist = localData.CartList;
+            this.cartObj = localData.CartObject;
+
+            this.Loaded += CartPage_Loaded;
         }
 
-        //private List<Component> Upload(string cmd)
-        //{
-        //    using (MySqlConnection connection = new MySqlConnection(DataBase.connection))
-        //    {
-        //        List<Component> components = new List<Component>();
-        //        connection.Open();
-
-        //        using (MySqlCommand command = new MySqlCommand(cmd, connection))
-        //        {
-        //            using (MySqlDataReader reader = command.ExecuteReader())
-        //            {
-
-        //                while (reader.Read())
-        //                {
-        //                    components.Add(new Component()
-        //                    {
-        //                        Id = Convert.ToInt32(reader["ProductId"]),
-        //                        Manufacturer = reader["Manufacturer"].ToString(),
-        //                        Model = reader["Model"].ToString(),
-        //                        Specification = reader["Specifications"].ToString(),
-        //                        Price = reader["Price"].ToString()
-
-        //                    });
-        //                }
-        //            }
-        //            command.ExecuteNonQuery();
-        //        }
-        //        return components;
-
-        //    }
-        //}
-
-        private void Cart_Loaded(object sender, RoutedEventArgs e)
+        private void CartPage_Loaded(object sender, RoutedEventArgs e)
         {
+            foreach (CartLine item in localData.CartObject.Lines)
+            {
+                item.TotalPrice = localData.CartObject.ComputeTotalValue();
+            }
+
+            mmm.ItemsSource = localData.CartObject.Lines;
+        }
+        private void Delete_Position(object sender, RoutedEventArgs e)
+        {
+            if (mmm.SelectedValue != null)
+            {
+                localData.CartObject.Lines.Remove((CartLine)mmm.SelectedValue);
+                mmm.ItemsSource = null;
+                mmm.ItemsSource = localData.CartObject.Lines;
+            }
 
         }
+
+
     }
 }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EbaniyMagaz.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,10 @@ namespace EbaniyMagaz
 
         public Component Component { get; set; }
 
-        public List<Component> CartList { get; set; }
+        public User User { get; set; }
+
+        public Cart CartObject { get; set; }
+
+        public ProductType ProductType { get; set; }
     }
 }

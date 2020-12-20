@@ -3,14 +3,60 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:con="clr-namespace:EbaniyMagaz.Data"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="689" d:DesignWidth="1018"
       Title="Opened">
 
-    <Grid Background="#FFFBCFCF">
-        <Label x:Name="lb" Content="Label" HorizontalAlignment="Left" Margin="70,58,0,0" VerticalAlignment="Top" Height="36" Width="161"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="24,10,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Label x:Name="lb_spec" Content="Label" HorizontalAlignment="Left" Margin="418,58,0,0" VerticalAlignment="Top" Height="312" Width="304"/>
+    <Page.Resources>
+        <con:PathConverter x:Key="PathConverter"/>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Padding" Value="10,5" />
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <!--<Setter Property="FontFamily" Value="{StaticResource LatoThin}"/>
+            <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}"/>-->
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontSize" Value="14"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Border" CornerRadius="8" BorderBrush="AliceBlue" BorderThickness="1.5" Background="{TemplateBinding Background}">
+                            <Grid Background="Transparent" Margin="11,5">
+                                <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#FFAAF0F0" />
+                                <Setter Property="BorderBrush" TargetName="Border" Value="#FFAAF0F0"/>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Foreground" Value="Orange" />
+                                <Setter Property="BorderBrush" TargetName="Border" Value="Orange"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="White">
+        <Image Source="{Binding Component.ImagePath, Converter={StaticResource PathConverter }}" Margin="110,128,658,311" Height="250" Width="250"/>
+        <TextBlock x:Name="lb" Margin="24,420,461,167" TextWrapping="Wrap" FontSize="20"/>
+        <Button Content="Назад" HorizontalAlignment="Left" Margin="24,10,0,0" VerticalAlignment="Top" Width="70" Click="Button_Click" Background="DarkOrange" Height="56" FontSize="15" Foreground="White"/>
+        <TextBlock x:Name="lb_spec" Margin="628,51,54,100" TextWrapping="Wrap" FontSize="20"/>
+        <Button x:Name="Button_buy" Click="Button_buy_Click" Content="В корзину" HorizontalAlignment="Left" Margin="24,584,0,0" VerticalAlignment="Top" Width="180" Height="70" Background="DarkOrange" RenderTransformOrigin="0.5,0.5" FontSize="20" Foreground="White"/>
+        <Button x:Name="Button_Plus" Click="Button_Plus_Click" Content="+" Background="DarkOrange" HorizontalAlignment="Left" Margin="337,594,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="20" Foreground="White"/>
+        <Label x:Name="Quant_label" Content="1"  HorizontalAlignment="Left" Margin="279,594,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Height="50" Width="53" Foreground="Black" FontSize="20"/>
+        <Button x:Name="Button_Minus" Click="Button_Minus_Click" Content="-" Background="DarkOrange" HorizontalAlignment="Left" Margin="224,594,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="20" Foreground="White"/>
 
     </Grid>
+    
 </Page>

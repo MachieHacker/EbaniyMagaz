@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EbaniyMagaz.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,9 @@ namespace EbaniyMagaz
         public string Manufacturer { get; set; }
         public string Model { get; set; }
         public string Specification { get; set; }
-        public string Price { get; set; }
+        public double Price { get; set; }
+        public int ProductNumber { get; set; }
+        public ProductType ProductType { get; set; }
+        public string ImagePath { get; set; }
     }
 }

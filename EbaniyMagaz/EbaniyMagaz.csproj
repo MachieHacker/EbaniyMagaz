@@ -52,6 +52,9 @@
     <Reference Include="Google.Protobuf, Version=3.11.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.11.4\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
+    <Reference Include="HandyControl, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HandyControl.3.0.0\lib\net47\HandyControl.dll</HintPath>
+    </Reference>
     <Reference Include="K4os.Compression.LZ4, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
       <HintPath>..\packages\K4os.Compression.LZ4.1.1.11\lib\net46\K4os.Compression.LZ4.dll</HintPath>
     </Reference>
@@ -122,9 +125,31 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Data\CartLogic.cs" />
+    <Compile Include="Data\DatabaseManager.cs" />
+    <Compile Include="Data\PathConverter.cs" />
     <Compile Include="Model\CartLine.cs" />
-    <Compile Include="Model\Component.cs" />
+    <Compile Include="Model\Components.cs" />
     <Compile Include="Data\DataBase.cs" />
+    <Compile Include="Model\ProductType.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Views\AdminPages\AdminCompAdd.xaml.cs">
+      <DependentUpon>AdminCompAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminPages\AdminCompOpened.xaml.cs">
+      <DependentUpon>AdminCompOpened.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminPages\AdminOpened.xaml.cs">
+      <DependentUpon>AdminOpened.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminPages\AdminTemplatePage.xaml.cs">
+      <DependentUpon>AdminTemplatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminPages\AdminUsedAdd.xaml.cs">
+      <DependentUpon>AdminUsedAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminPages\TabelUsers.xaml.cs">
+      <DependentUpon>TabelUsers.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\HomePageStore.xaml.cs">
       <DependentUpon>HomePageStore.xaml</DependentUpon>
     </Compile>
@@ -135,8 +160,11 @@
     <Compile Include="Views\Pages\Opened.xaml.cs">
       <DependentUpon>Opened.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pages\ProcessorsPage.xaml.cs">
-      <DependentUpon>ProcessorsPage.xaml</DependentUpon>
+    <Compile Include="Views\Pages\TemplatePage.xaml.cs">
+      <DependentUpon>TemplatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\AdminPanel.xaml.cs">
+      <DependentUpon>AdminPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
@@ -144,7 +172,35 @@
     <Compile Include="Views\Windows\Store.xaml.cs">
       <DependentUpon>Store.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\AdminPages\AdminCompAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminPages\AdminCompOpened.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminPages\AdminOpened.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminPages\AdminTemplatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminPages\AdminUsedAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminPages\TabelUsers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pages\HomePageStore.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\AdminPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -168,7 +224,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Pages\ProcessorsPage.xaml">
+    <Page Include="Views\Pages\TemplatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -211,8 +267,11 @@
   <ItemGroup>
     <Resource Include="7zMbKmU.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Images\" />
+    <Resource Include="Images\b21b015e0d0d68bc5aefc043d4008daf.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

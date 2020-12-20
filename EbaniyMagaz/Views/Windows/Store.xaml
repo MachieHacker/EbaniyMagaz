@@ -5,18 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Store" Height="720" 
-        Width="1280" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Width="1280" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="{x:Null}">
 
-    <Window.Resources>
-        <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="FontSize" Value="20"/>
-        </Style>
-    </Window.Resources>
-    
     <Grid>
-       <!--Menu-->
+        <!--Menu-->
 
-        <Grid Background="Red" Width="220"
+        <Grid Width="220"
             HorizontalAlignment="Left">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="10" ShadowDepth="3"/>
@@ -26,9 +20,40 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <ListView x:Name="NavMenu"
-                      SelectionChanged="NavMenu_SelectionChanged">
-                <ListViewItem>
-                    <TextBlock Text="Главная"/>
+                      SelectionChanged="NavMenu_SelectionChanged" BorderBrush="{x:Null}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="Margin" Value="0,5,0,0"/>
+                        <!--<Setter Property="BorderBrush" Value="{StaticResource ForegroundLightBrush}"/>
+                    <Setter Property="Background" Value="{StaticResource LauncherBodyBackgroundBrush}"/>-->
+                        <Setter Property="FontSize" Value="15"/>
+                        <!--<Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}"/>-->
+                        <Setter Property="Padding" Value="20"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                    <Border x:Name="Border" CornerRadius="8" BorderBrush="AliceBlue" BorderThickness="1.5" Background="{TemplateBinding Background}">
+                                        <Grid Background="Transparent" Margin="11,5">
+                                            <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Grid>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightGray"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="DarkOrange"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <!--<Setter Property="FontWeight" Value="Bold"/>-->
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListViewItem Background="DarkOrange">
+                    <TextBlock Text="DPS" Foreground="White" FontWeight="Bold" FontFamily="Courier New" FontSize="30"/>
                 </ListViewItem>
                 <ListViewItem>
                     <TextBlock Text="Процессоры"/>
@@ -36,15 +61,69 @@
                 <ListViewItem>
                     <TextBlock Text="Видеокарта"/>
                 </ListViewItem>
+                <ListViewItem>
+                    <TextBlock Text="Материнские платы"/>
+                </ListViewItem>
+                <ListViewItem>
+                    <TextBlock Text="Оперативная память"/>
+                </ListViewItem>
+                <ListViewItem>
+                    <TextBlock Text="Накопители"/>
+                </ListViewItem>
+                <ListViewItem>
+                    <TextBlock Text="Блоки питания"/>
+                </ListViewItem>
+                <ListViewItem>
+                    <TextBlock Text="Охлаждение"/>
+                </ListViewItem>
+                <ListViewItem>
+                    <TextBlock Text="Корпуса"/>
+                </ListViewItem>
             </ListView>
             <Grid Grid.Row="1" Background="White">
                 <Button Content="Корзина" FontSize="20"
                         x:Name="CartButton"
-                        Click="CartButton_Click"/>
+                        Click="CartButton_Click" Height="63" HorizontalAlignment="Stretch" Background="DarkOrange" Foreground="White"/>
             </Grid>
-            
+
         </Grid>
-        
-        <Frame x:Name="MainFrame" Margin="220,0,0,0"/>
+
+        <Frame x:Name="MainFrame" Margin="220,0,0,0" NavigationUIVisibility="Hidden" Foreground="{x:Null}" Background="White"/>
     </Grid>
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Padding" Value="10,5" />
+            <!--<Setter Property="FontFamily" Value="{StaticResource LatoThin}"/>
+            <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}"/>-->
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontSize" Value="14"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Border" CornerRadius="16" BorderBrush="AliceBlue" BorderThickness="1.5" Background="{TemplateBinding Background}">
+                            <Grid Background="Transparent" Margin="11,5">
+                                <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#FFAAF0F0" />
+                                <Setter Property="BorderBrush" TargetName="Border" Value="#FFAAF0F0"/>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Foreground" Value="Orange" />
+                                <Setter Property="BorderBrush" TargetName="Border" Value="Orange"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 </Window>

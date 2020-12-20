@@ -28,58 +28,6 @@ namespace EbaniyMagaz
             InitializeComponent();
         }
 
-        //private void button_login_Click(object sender, EventArgs e)
-        //{
-        //    String LoginUser = textBox_login.Text;
-        //    String PassUser = textBox_password.Text;
-
-        //    DataTable table = new DataTable();
-
-        //    MySqlDataAdapter adapter = new MySqlDataAdapter();
-
-        //    MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @US AND `Password` = @UP ", new MySqlConnection(DataBase.connection));
-        //    command.Parameters.Add("@US", MySqlDbType.VarChar).Value = LoginUser;
-        //    command.Parameters.Add("@UP", MySqlDbType.VarChar).Value = PassUser;
-
-        //    adapter.SelectCommand = command;
-        //    adapter.Fill(table);
-
-
-        //    if (textBox_login.Text != "" && textBox_password.Text != "")
-        //    {
-        //        if (table.Rows.Count == 0)
-        //        {
-        //            MessageBox.Show("Проверьте правильность введенных данных");
-        //            textBox_login.Text = "";
-        //            textBox_password.Text = "";
-        //        }
-        //        else
-        //        {
-        //            this.Hide();
-        //            Store store = new Store();
-        //            store.ShowDialog();
-        //            this.Close();
-        //        }
-
-        //    }
-
-        //    else
-        //    {
-        //        MessageBox.Show("Введите данные");
-        //    }
-
-        //}
-
-
-        //private void button_register_Click(object sender, EventArgs e)
-        //{
-        //    this.Hide();
-        //    Register register = new Register();
-        //    register.ShowDialog();
-        //    this.Close();
-
-        //}
-
         private void button_login_Click(object sender, RoutedEventArgs e)
         {
             DataTable table = new DataTable();
@@ -104,10 +52,22 @@ namespace EbaniyMagaz
                 }
                 else
                 {
-                    this.Hide();
-                    Store store = new Store();
-                    store.Show();
-                    this.Close();
+
+                    if (textbox_login.Text == "Admin" && textbox_pass.Password == "Admin")
+                    {
+                        this.Hide();
+                        AdminPanel admin = new AdminPanel();
+                        admin.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        this.Hide();
+                        Store store = new Store();
+                        store.Show();
+                        this.Close();
+                    }
+                    
                 }
 
             }
